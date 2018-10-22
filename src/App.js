@@ -3,7 +3,8 @@ import './App.css';
 import CartHeader from './CartHeader';
 import CartFooter from './CartFooter';
 import CartItems from './CartItems';
-import AddItem from './AddItem'
+import AddItem from './AddItem';
+import TotalPrice from './total'
 
 
 class App extends Component {
@@ -14,7 +15,6 @@ class App extends Component {
         { id: 1, product: { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 }, quantity: 1 },
         { id: 2, product: { id: 41, name: 'Heavy Duty Concrete Plate', priceInCents: 499 }, quantity: 2 },
         { id: 3, product: { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 }, quantity: 1 },
-        
       ], 
       products: [
         { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 },
@@ -38,8 +38,6 @@ itemSelect = (event) => {
   let [name, price] = event.target.value.split("-")
   this.setState({item: name})
   this.setState({price: price})
-  console.log(name)
-  console.log(price)
 }
 quantityChange = (event) => {
   this.setState({quantity: event.target.value})
@@ -50,7 +48,7 @@ quantityChange = (event) => {
 
     var newItem = {
       id: this.state.cartItemList.length +1,
-      Product: {
+      product: {
         id: 40,
         name: this.state.item,
         priceInCents: this.state.price,
@@ -67,6 +65,7 @@ quantityChange = (event) => {
       <>
         <CartHeader />
         <CartItems cartItemList = {this.state.cartItemList}/>
+        <TotalPrice cartItemList = {this.state.cartItemList}/>
         <AddItem productList = {this.state.products} addItem = {this.addItem} itemSelect = {this.itemSelect} quantityChange = {this.quantityChange}/>
         <CartFooter copyright = "&copy; 2016" />
       </>
