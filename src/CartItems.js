@@ -2,8 +2,10 @@ import React from 'react';
 import CartItem from'./CartItem';
 
 const CartItems = (props) => {
-    var renderedCart = props.cartItemList.map(cartThing => {
-        return <CartItem key={cartThing.id} name={cartThing.product.name} price={cartThing.product.priceInCents} quantity={cartThing.quantity} />
+    var renderedCart = props.cartItemList.map(props => {
+        return (
+        <CartItem key={props.id} name={props.product.name} price={props.product.priceInCents} quantity={props.quantity} />
+        )
     })
     return ( 
         <>

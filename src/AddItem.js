@@ -1,6 +1,7 @@
 import React from 'react';
 
 class AddItem extends React.Component{
+
     render() { 
         return (
             <>
@@ -12,7 +13,7 @@ class AddItem extends React.Component{
                     <select onChange={this.props.quantityChange} className="custom-select" id="inputGroupSelect01">
                         <option defaultValue>Choose...</option>
                         <option value="1">1</option>
-                        <option value="2">3</option>
+                        <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
@@ -29,7 +30,11 @@ class AddItem extends React.Component{
                     </div>
                         <select onChange={this.props.itemSelect} className="custom-select" id="inputGroupSelect01">
                             <option defaultValue>Select an Option...</option>
-                            {this.props.productList.map((product) => <option key={product.id} value={product.id}> Item: {product.name} -- Price: {product.priceInCents}¢</option>)}
+                            {this.props.productList.map( product => {
+                            return (
+                                <option key={product.id} value={product.name + "-" + product.priceInCents}>{product.name}</option>
+                            )
+                            })}
                         </select>
                     </div>
                 </div>
